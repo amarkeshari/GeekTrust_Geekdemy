@@ -24,13 +24,13 @@ public class SubTotal {
 
     public void calculateSubTotal() {
         totalProDiscount.calculateProDiscount();
-        List<ProgrammeType> curCart= totalProDiscount.getProgrammesCart();
-        for(ProgrammeType programmeType:curCart) {
-            Float programCost=programmeType.getProgrammeCost();
-            Integer courseCount= programmeType.getProgrammeQuantity();
-            float curProgramProDiscount=programCost*courseCount;
-            subTotal+=curProgramProDiscount;
+        List<ProgrammeType> curCart = totalProDiscount.getProgrammesCart();
+        for (ProgrammeType programmeType : curCart) {
+            Float programCost = programmeType.getProgrammeCost();
+            Integer courseCount = programmeType.getProgrammeQuantity();
+            float curProgramProDiscount = programCost * courseCount;
+            subTotal += curProgramProDiscount;
         }
-        subTotal-= (totalProDiscount.getProDiscount()-totalProDiscount.getProMembershipFee());
+        subTotal -= (totalProDiscount.getProDiscount() - totalProDiscount.getProMembershipFee());
     }
 }

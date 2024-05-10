@@ -8,10 +8,10 @@ import java.util.List;
 
 public class Programme {
 
-    private final List <ProgrammeType> programmesCart;
+    private final List<ProgrammeType> programmesCart;
 
     public Programme() {
-        this.programmesCart= Arrays.asList(ProgrammeType.DIPLOMA,ProgrammeType.CERTIFICATION,ProgrammeType.DEGREE);
+        this.programmesCart = Arrays.asList(ProgrammeType.DIPLOMA, ProgrammeType.CERTIFICATION, ProgrammeType.DEGREE);
     }
 
     public String addProgramme(String programme, Integer programQuantity) {

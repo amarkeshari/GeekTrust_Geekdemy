@@ -18,10 +18,10 @@ public class TotalProDiscount {
     private Float proMembershipFee;
 
     public TotalProDiscount(Programme programme) {
-        this.programme=programme;
-        this.proDiscount=0.00f;
-        this.proMembershipFee=0.00f;
-        this.isProMember=ProMember.NO;
+        this.programme = programme;
+        this.proDiscount = 0.00f;
+        this.proMembershipFee = 0.00f;
+        this.isProMember = ProMember.NO;
     }
 
     public ProMember getIsProMember() {
@@ -45,15 +45,15 @@ public class TotalProDiscount {
     }
 
     public void calculateProDiscount() {
-        if(this.getIsProMember().equals(ProMember.YES)) {
-            this.proMembershipFee= CommonConstants.PRO_MEMBERSHIP_FEE;
-            List <ProgrammeType> curCart=programme.getProgrammesCart();
-            for(ProgrammeType programmeType:curCart) {
-                Float programCost=programmeType.getProgrammeCost();
-                Integer courseCount= programmeType.getProgrammeQuantity();
-                Float curProgramProDiscountPercentage=programmeType.getProDiscount();
-                float curProgramProDiscount=programCost*courseCount*curProgramProDiscountPercentage;
-                proDiscount+=curProgramProDiscount;
+        if (this.getIsProMember().equals(ProMember.YES)) {
+            this.proMembershipFee = CommonConstants.PRO_MEMBERSHIP_FEE;
+            List<ProgrammeType> curCart = programme.getProgrammesCart();
+            for (ProgrammeType programmeType : curCart) {
+                Float programCost = programmeType.getProgrammeCost();
+                Integer courseCount = programmeType.getProgrammeQuantity();
+                Float curProgramProDiscountPercentage = programmeType.getProDiscount();
+                float curProgramProDiscount = programCost * courseCount * curProgramProDiscountPercentage;
+                proDiscount += curProgramProDiscount;
             }
         }
     }

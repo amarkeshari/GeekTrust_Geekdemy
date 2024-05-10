@@ -9,7 +9,7 @@ public enum CouponsType {
     private final Float discountPercentage;
 
     CouponsType(Float discountPercentage) {
-        this.discountPercentage=discountPercentage;
+        this.discountPercentage = discountPercentage;
     }
 
     public Float getDiscountPercentage() {

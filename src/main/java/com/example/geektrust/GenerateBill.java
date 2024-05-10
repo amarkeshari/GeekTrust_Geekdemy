@@ -14,10 +14,10 @@ import java.util.Scanner;
 
 public class GenerateBill {
 
-    private final Programme programme=new Programme();
+    private final Programme programme = new Programme();
     private final Coupon coupon = new Coupon();
-    private final TotalProDiscount totalProDiscount =new TotalProDiscount(programme);
-    private final PrintSummary printSummary=new PrintSummary(totalProDiscount,coupon);
+    private final TotalProDiscount totalProDiscount = new TotalProDiscount(programme);
+    private final PrintSummary printSummary = new PrintSummary(totalProDiscount, coupon);
 
     public void generateBill(String path) throws FileNotFoundException {
         try {
@@ -27,7 +27,7 @@ public class GenerateBill {
                 List<String> curList = Arrays.asList(curLine.split("\\s+"));
                 switch (curList.get(CommonConstants.ZERO)) {
                     case "ADD_PROGRAMME":
-                        programme.addProgramme(curList.get(CommonConstants.ONE),Integer.parseInt(curList.get(CommonConstants.TWO)));
+                        programme.addProgramme(curList.get(CommonConstants.ONE), Integer.parseInt(curList.get(CommonConstants.TWO)));
                         break;
                     case "APPLY_COUPON":
                         coupon.addCoupon(curList.get(CommonConstants.ONE));

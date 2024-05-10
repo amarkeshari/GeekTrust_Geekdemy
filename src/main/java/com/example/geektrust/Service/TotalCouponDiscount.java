@@ -28,61 +28,60 @@ public class TotalCouponDiscount {
     }
 
     public TotalCouponDiscount(SubTotal subTotal, Coupon coupon) {
-        this.subTotal=subTotal;
-        this.coupon=coupon;
-        this.finalCouponsType=CouponsType.DISCOUNT_NONE;
-        this.totalCouponDiscount= (float) CommonConstants.ZERO;
-        this.totalProgrammesInCart=0;
+        this.subTotal = subTotal;
+        this.coupon = coupon;
+        this.finalCouponsType = CouponsType.DISCOUNT_NONE;
+        this.totalCouponDiscount = (float) CommonConstants.ZERO;
+        this.totalProgrammesInCart = 0;
     }
 
     public void calculateTotalCouponDiscount() {
         this.subTotal.calculateSubTotal();
-        List <CouponsType> couponList=this.coupon.getCouponsApplicable();
-        List<ProgrammeType> curCart= this.subTotal.getProgrammesCart();
+        List<CouponsType> couponList = this.coupon.getCouponsApplicable();
+        List<ProgrammeType> curCart = this.subTotal.getProgrammesCart();
         this.calculateTotalProgrammesInCart(curCart);
         this.calculateDiscountOnGivenCoupon(couponList);
         this.calculateB4G1Discount(curCart);
     }
 
-    public void calculateDiscountOnGivenCoupon(List <CouponsType> couponList) {
-        boolean isG20applicable=false,isG5applicable=false;
-        for(CouponsType couponsType:couponList) {
+    public void calculateDiscountOnGivenCoupon(List<CouponsType> couponList) {
+        boolean isG20applicable = false, isG5applicable = false;
+        for (CouponsType couponsType : couponList) {
             switch (couponsType) {
                 case DEAL_G20:
-                    isG20applicable=true;
+                    isG20applicable = true;
                     break;
                 case DEAL_G5:
-                    isG5applicable=true;
+                    isG5applicable = true;
                     break;
             }
         }
-        if(isG20applicable&&subTotal.getSubTotal()>=CommonConstants.MIN_PURCHASE_AMOUNT_DEAL_G20) {
-            totalCouponDiscount=this.subTotal.getSubTotal()*CouponsType.DEAL_G20.getDiscountPercentage();
-            finalCouponsType=CouponsType.DEAL_G20;
-        }
-        else if(isG5applicable&&totalProgrammesInCart>=CommonConstants.MIN_COURSE_COUNT_DEAL_G5) {
-            totalCouponDiscount=this.subTotal.getSubTotal()*CouponsType.DEAL_G5.getDiscountPercentage();
-            finalCouponsType=CouponsType.DEAL_G5;
+        if (isG20applicable && subTotal.getSubTotal() >= CommonConstants.MIN_PURCHASE_AMOUNT_DEAL_G20) {
+            totalCouponDiscount = this.subTotal.getSubTotal() * CouponsType.DEAL_G20.getDiscountPercentage();
+            finalCouponsType = CouponsType.DEAL_G20;
+        } else if (isG5applicable && totalProgrammesInCart >= CommonConstants.MIN_COURSE_COUNT_DEAL_G5) {
+            totalCouponDiscount = this.subTotal.getSubTotal() * CouponsType.DEAL_G5.getDiscountPercentage();
+            finalCouponsType = CouponsType.DEAL_G5;
         }
     }
 
     public void calculateB4G1Discount(List<ProgrammeType> curCart) {
-        if(totalProgrammesInCart>=CommonConstants.MIN_COURSE_COUNT_B4G1) {
-            for(ProgrammeType programmeType:curCart) {
-                if (programmeType.getProgrammeQuantity()>0) {
-                    totalCouponDiscount=programmeType.getProgrammeCost();
+        if (totalProgrammesInCart >= CommonConstants.MIN_COURSE_COUNT_B4G1) {
+            for (ProgrammeType programmeType : curCart) {
+                if (programmeType.getProgrammeQuantity() > 0) {
+                    totalCouponDiscount = programmeType.getProgrammeCost();
                     break;
                 }
             }
-            finalCouponsType=CouponsType.B4G1;
+            finalCouponsType = CouponsType.B4G1;
         }
     }
 
     public void calculateTotalProgrammesInCart(List<ProgrammeType> curCart) {
-        Integer sumProgrammes=0;
-        for(ProgrammeType programmeType:curCart) {
-            sumProgrammes+=programmeType.getProgrammeQuantity();
+        Integer sumProgrammes = 0;
+        for (ProgrammeType programmeType : curCart) {
+            sumProgrammes += programmeType.getProgrammeQuantity();
         }
-        totalProgrammesInCart=sumProgrammes;
+        totalProgrammesInCart = sumProgrammes;
     }
 }

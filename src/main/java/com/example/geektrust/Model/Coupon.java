@@ -7,10 +7,10 @@ import java.util.List;
 
 public class Coupon {
 
-    private final List <CouponsType> couponsApplicable;
+    private final List<CouponsType> couponsApplicable;
 
     public Coupon() {
-        this.couponsApplicable=new ArrayList<>();
+        this.couponsApplicable = new ArrayList<>();
     }
 
     public String addCoupon(String coupon) {
