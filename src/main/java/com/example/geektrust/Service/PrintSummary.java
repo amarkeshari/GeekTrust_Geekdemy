@@ -28,20 +28,26 @@ public class PrintSummary {
 
     public void printBill() {
         totalCouponDiscount.calculateTotalCouponDiscount();
-        System.out.println("SUB_TOTAL " + subTotal.getSubTotal());
+        System.out.println("SUB_TOTAL " + getTwoDecimalPlaces(subTotal.getSubTotal()));
         if (totalCouponDiscount.getFinalCouponsType().equals(CouponsType.DISCOUNT_NONE)) {
             System.out.println("DISCOUNT NONE 0");
         } else {
-            System.out.println("COUPON_DISCOUNT " + totalCouponDiscount.getFinalCouponsType() + " " + totalCouponDiscount.getTotalCouponDiscount());
+            System.out.println("COUPON_DISCOUNT " + totalCouponDiscount.getFinalCouponsType() + " " + getTwoDecimalPlaces(totalCouponDiscount.getTotalCouponDiscount()));
         }
-        System.out.println("TOTAL_PRO_DISCOUNT " + totalProDiscount.getProDiscount());
-        System.out.println("PRO_MEMBERSHIP_FEE " + totalProDiscount.getProMembershipFee());
+        System.out.println("TOTAL_PRO_DISCOUNT " + getTwoDecimalPlaces(totalProDiscount.getProDiscount()));
+        System.out.println("PRO_MEMBERSHIP_FEE " + getTwoDecimalPlaces(totalProDiscount.getProMembershipFee()));
         totalAmount = subTotal.getSubTotal() - totalCouponDiscount.getTotalCouponDiscount();
         if (Float.compare(totalAmount, CommonConstants.ENROLLMENT_FEE_CAP) < 0) {
             enrollmentFee = CommonConstants.ENROLLMENT_FEE;
         }
         totalAmount += enrollmentFee;
-        System.out.println("ENROLLMENT_FEE " + enrollmentFee);
-        System.out.println("TOTAL " + totalAmount);
+        System.out.println("ENROLLMENT_FEE " + getTwoDecimalPlaces(enrollmentFee));
+        System.out.println("TOTAL " + getTwoDecimalPlaces(totalAmount));
     }
+
+    public String getTwoDecimalPlaces(Float decimal) {
+        return String.format("%.02f", decimal);
+    }
+
+
 }
