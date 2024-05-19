@@ -30,7 +30,7 @@ public class PrintSummary {
         totalCouponDiscount.calculateTotalCouponDiscount();
         System.out.println("SUB_TOTAL " + getTwoDecimalPlaces(subTotal.getSubTotal()));
         if (totalCouponDiscount.getFinalCouponsType().equals(CouponsType.DISCOUNT_NONE)) {
-            System.out.println("DISCOUNT NONE 0");
+            System.out.println("COUPON_DISCOUNT NONE 0.00");
         } else {
             System.out.println("COUPON_DISCOUNT " + totalCouponDiscount.getFinalCouponsType() + " " + getTwoDecimalPlaces(totalCouponDiscount.getTotalCouponDiscount()));
         }
