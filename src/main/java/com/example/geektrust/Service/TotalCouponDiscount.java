@@ -31,9 +31,9 @@ public class TotalCouponDiscount {
     public TotalCouponDiscount(SubTotal subTotal, Coupon coupon) {
         this.subTotal = subTotal;
         this.coupon = coupon;
-        this.finalCouponsType = CouponsType.DISCOUNT_NONE;
+        this.finalCouponsType = CouponsType.NONE;
         this.totalCouponDiscount = (float) CommonConstants.ZERO;
-        this.totalProgrammesInCart = 0;
+        this.totalProgrammesInCart = CommonConstants.ZERO;
     }
 
     public void calculateTotalCouponDiscount() {
@@ -69,10 +69,10 @@ public class TotalCouponDiscount {
     public void calculateB4G1Discount(List<ProgrammeType> curCart) {
         if (totalProgrammesInCart >= CommonConstants.MIN_COURSE_COUNT_B4G1) {
             for (ProgrammeType programmeType : curCart) {
-                if (programmeType.getProgrammeQuantity() > 0) {
+                if (programmeType.getProgrammeQuantity() > CommonConstants.ZERO) {
                     totalCouponDiscount = programmeType.getProgrammeCost();
                     if(subTotal.getIsProMember().equals(ProMember.YES)) {
-                        totalCouponDiscount*=(1-programmeType.getProDiscount());
+                        totalCouponDiscount*=(CommonConstants.ONE-programmeType.getProDiscount());
                     }
                     break;
                 }
@@ -82,7 +82,7 @@ public class TotalCouponDiscount {
     }
 
     public void calculateTotalProgrammesInCart(List<ProgrammeType> curCart) {
-        Integer sumProgrammes = 0;
+        Integer sumProgrammes = CommonConstants.ZERO;
         for (ProgrammeType programmeType : curCart) {
             sumProgrammes += programmeType.getProgrammeQuantity();
         }

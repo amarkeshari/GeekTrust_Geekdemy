@@ -4,7 +4,7 @@ public enum CouponsType {
     DEAL_G20(0.2f),
     DEAL_G5(0.05f),
     B4G1(0.00f),
-    DISCOUNT_NONE(0.00f);
+    NONE(0.00f);
 
     private final Float discountPercentage;
 

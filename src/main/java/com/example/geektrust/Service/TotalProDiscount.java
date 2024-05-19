@@ -19,8 +19,8 @@ public class TotalProDiscount {
 
     public TotalProDiscount(Programme programme) {
         this.programme = programme;
-        this.proDiscount = 0.00f;
-        this.proMembershipFee = 0.00f;
+        this.proDiscount = CommonConstants.ZERO_DECIMAL;
+        this.proMembershipFee = CommonConstants.ZERO_DECIMAL;
         this.isProMember = ProMember.NO;
     }
 

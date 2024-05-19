@@ -23,17 +23,13 @@ public class PrintSummary {
         this.coupon = coupon;
         this.subTotal = new SubTotal(totalProDiscount);
         this.totalCouponDiscount = new TotalCouponDiscount(subTotal, coupon);
-        enrollmentFee = totalAmount = 0.00f;
+        enrollmentFee = totalAmount = CommonConstants.ZERO_DECIMAL;
     }
 
     public void printBill() {
         totalCouponDiscount.calculateTotalCouponDiscount();
         System.out.println("SUB_TOTAL " + getTwoDecimalPlaces(subTotal.getSubTotal()));
-        if (totalCouponDiscount.getFinalCouponsType().equals(CouponsType.DISCOUNT_NONE)) {
-            System.out.println("COUPON_DISCOUNT NONE 0.00");
-        } else {
-            System.out.println("COUPON_DISCOUNT " + totalCouponDiscount.getFinalCouponsType() + " " + getTwoDecimalPlaces(totalCouponDiscount.getTotalCouponDiscount()));
-        }
+        System.out.println("COUPON_DISCOUNT " + totalCouponDiscount.getFinalCouponsType() + " " + getTwoDecimalPlaces(totalCouponDiscount.getTotalCouponDiscount()));
         System.out.println("TOTAL_PRO_DISCOUNT " + getTwoDecimalPlaces(totalProDiscount.getProDiscount()));
         System.out.println("PRO_MEMBERSHIP_FEE " + getTwoDecimalPlaces(totalProDiscount.getProMembershipFee()));
         totalAmount = subTotal.getSubTotal() - totalCouponDiscount.getTotalCouponDiscount();

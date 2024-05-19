@@ -1,5 +1,6 @@
 package com.example.geektrust.Service;
 
+import com.example.geektrust.Constants.CommonConstants;
 import com.example.geektrust.Constants.ProMember;
 import com.example.geektrust.Constants.ProgrammeType;
 
@@ -12,7 +13,7 @@ public class SubTotal {
 
     public SubTotal(TotalProDiscount totalProDiscount) {
         this.totalProDiscount = totalProDiscount;
-        this.subTotal = 0.00f;
+        this.subTotal = CommonConstants.ZERO_DECIMAL;
     }
 
     public List<ProgrammeType> getProgrammesCart() {
