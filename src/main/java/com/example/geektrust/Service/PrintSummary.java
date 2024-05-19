@@ -1,7 +1,6 @@
 package com.example.geektrust.Service;
 
 import com.example.geektrust.Constants.CommonConstants;
-import com.example.geektrust.Constants.CouponsType;
 import com.example.geektrust.Model.Coupon;
 
 public class PrintSummary {
@@ -33,7 +32,7 @@ public class PrintSummary {
         System.out.println("TOTAL_PRO_DISCOUNT " + getTwoDecimalPlaces(totalProDiscount.getProDiscount()));
         System.out.println("PRO_MEMBERSHIP_FEE " + getTwoDecimalPlaces(totalProDiscount.getProMembershipFee()));
         totalAmount = subTotal.getSubTotal() - totalCouponDiscount.getTotalCouponDiscount();
-        if (Float.compare(totalAmount, CommonConstants.ENROLLMENT_FEE_CAP) < 0) {
+        if (Float.compare(totalAmount, CommonConstants.ENROLLMENT_FEE_CAP) < CommonConstants.ZERO) {
             enrollmentFee = CommonConstants.ENROLLMENT_FEE;
         }
         totalAmount += enrollmentFee;

@@ -3,14 +3,16 @@ package com.example.geektrust.Model;
 import com.example.geektrust.Constants.CouponsType;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Coupon {
 
-    private final List<CouponsType> couponsApplicable;
+    private final Set<CouponsType> couponsApplicable;
 
     public Coupon() {
-        this.couponsApplicable = new ArrayList<>();
+        this.couponsApplicable = new HashSet<>();
     }
 
     public String addCoupon(String coupon) {
@@ -25,7 +27,7 @@ public class Coupon {
         return "Coupon added successfully";
     }
 
-    public List<CouponsType> getCouponsApplicable() {
+    public Set<CouponsType> getCouponsApplicable() {
         return this.couponsApplicable;
     }
 }

@@ -24,9 +24,6 @@ public class SubTotal {
         return subTotal;
     }
 
-    public ProMember getIsProMember() {
-        return this.totalProDiscount.getIsProMember();
-    }
 
     public void calculateSubTotal() {
         totalProDiscount.calculateProDiscount();

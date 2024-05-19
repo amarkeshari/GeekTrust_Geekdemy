@@ -53,6 +53,7 @@ public class TotalProDiscount {
                 Integer courseCount = programmeType.getProgrammeQuantity();
                 Float curProgramProDiscountPercentage = programmeType.getProDiscount();
                 float curProgramProDiscount = programCost * courseCount * curProgramProDiscountPercentage;
+                programmeType.changeProgrammeCost(curProgramProDiscount);
                 proDiscount += curProgramProDiscount;
             }
         }

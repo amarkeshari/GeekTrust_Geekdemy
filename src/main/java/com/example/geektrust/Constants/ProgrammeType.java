@@ -5,7 +5,7 @@ public enum ProgrammeType {
     CERTIFICATION(3000.00f, 0, 0.02f),
     DEGREE(5000.00f, 0, 0.03f);
 
-    private final Float programmeCost;
+    private Float programmeCost;
 
     private Integer programmeQuantity;
 
@@ -19,6 +19,10 @@ public enum ProgrammeType {
 
     public void increaseQuantity(Integer quantity) {
         this.programmeQuantity += quantity;
+    }
+
+    public void changeProgrammeCost(Float discount) {
+        this.programmeCost-=discount;
     }
 
     public Float getProDiscount() {

@@ -9,7 +9,7 @@ public class CommonConstants {
     public static final int THREE = 3;
     public static final int MIN_COURSE_COUNT_B4G1 = 4;
     public static final int MIN_COURSE_COUNT_DEAL_G5 = 2;
-    public static final Float ZERO_DECIMAL=0.00F;
+    public static final Float ZERO_DECIMAL=0.00f;
 
     public static final Float MIN_PURCHASE_AMOUNT_DEAL_G20 = 10000.00f;
     public static final Float ENROLLMENT_FEE = 500.00f;
