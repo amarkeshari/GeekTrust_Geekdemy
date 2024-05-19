@@ -2,6 +2,7 @@ package com.example.geektrust.Service;
 
 import com.example.geektrust.Constants.CommonConstants;
 import com.example.geektrust.Constants.CouponsType;
+import com.example.geektrust.Constants.ProMember;
 import com.example.geektrust.Constants.ProgrammeType;
 import com.example.geektrust.Model.Coupon;
 
@@ -70,6 +71,9 @@ public class TotalCouponDiscount {
             for (ProgrammeType programmeType : curCart) {
                 if (programmeType.getProgrammeQuantity() > 0) {
                     totalCouponDiscount = programmeType.getProgrammeCost();
+                    if(subTotal.getIsProMember().equals(ProMember.YES)) {
+                        totalCouponDiscount*=(1-programmeType.getProDiscount());
+                    }
                     break;
                 }
             }

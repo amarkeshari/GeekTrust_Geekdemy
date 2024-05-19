@@ -1,5 +1,6 @@
 package com.example.geektrust.Service;
 
+import com.example.geektrust.Constants.ProMember;
 import com.example.geektrust.Constants.ProgrammeType;
 
 import java.util.List;
@@ -20,6 +21,10 @@ public class SubTotal {
 
     public Float getSubTotal() {
         return subTotal;
+    }
+
+    public ProMember getIsProMember() {
+        return this.totalProDiscount.getIsProMember();
     }
 
     public void calculateSubTotal() {
